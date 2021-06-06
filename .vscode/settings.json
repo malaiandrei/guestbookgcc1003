@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/075b42a1-adf0-4696-b804-875493c45b08/resourceGroups/DefaultResourceGroup-WEU/providers/Microsoft.Web/sites/guestbookgcc1003",
+    "appService.deploySubpath": "."
+}
