@@ -1,4 +1,3 @@
-import getStream from "into-stream";
 import appInsights from "applicationinsights";
 import express from "express";
 import bodyParser from "body-parser";
@@ -8,13 +7,6 @@ import { default as mongodb } from "mongodb";
 let MongoClient = mongodb.MongoClient;
 import cors from "cors";
 import path from "path";
-
-import multer from "multer";
-import {
-  BlobServiceClient,
-  StorageSharedKeyCredential,
-  newPipeline,
-} from "@azure/storage-blob";
 
 const url =
   "mongodb://guestbookgcc1003-mongod:F9xPnSFqBccmDZv9ZPVImV3RGGLrJseKWC9i1Y8WghIvNswchBQGXu01nJmiL6eG2nSTkiofitI3fwaDsnRN8g%3D%3D@guestbookgcc1003-mongod.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&maxIdleTimeMS=120000&appName=@guestbookgcc1003-mongod@";

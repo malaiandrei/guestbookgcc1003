@@ -30,9 +30,25 @@ class GBList extends React.Component {
   onClick = (e) => {
     let { name, message } = this.state;
 
-    console.log("storageConfigured:" + storageConfigured);
-    const blobId = this.onFileUpload();
-    console.log("blobId:" + blobId);
+    // console.log("storageConfigured:" + storageConfigured);
+    // const blobId = this.onFileUpload();
+    // console.log("blobId:" + blobId);
+    let config = { headers: { "Access-Control-Allow-Origin": "*" } };
+    axios
+      .post(
+        "https://questbookfunction.azurewebsites.net/api/guestbookf1003?code=kyWhPacBguKahhfrly0B8SSvXOmkfKtTI0hxQh4Xbxj8Z4B2BcTHsA==",
+        {
+          context: this.state.selectedFile,
+        },
+        config
+      )
+      .then((response) => {
+        console.log(response, "merge!");
+      })
+      .catch((err) => {
+        console.log(err, "nu merge");
+      });
+
     return;
     if (
       this.state.name.lenght > 0 &&
@@ -87,6 +103,7 @@ class GBList extends React.Component {
 
   onFileUpload = () => {
     const blobsInContainer = uploadFileToBlob(this.state.selectedFile);
+    console.log("blobsInContainer:", blobsInContainer);
     this.setBlobList(blobsInContainer);
     this.setState({ selectedFile: null });
     this.setInputKey(Math.random().toString(36));
@@ -142,6 +159,16 @@ class GBList extends React.Component {
   render() {
     return (
       <div>
+        <form
+          method="post"
+          action="https://questbookfunction.azurewebsites.net/api/guestbookf1003?code=kyWhPacBguKahhfrly0B8SSvXOmkfKtTI0hxQh4Xbxj8Z4B2BcTHsA=="
+          encType="multipart/form-data"
+        >
+          <label for="myfile">Delect a file:</label>
+          <input type="file" id="myfile" name="filename" />
+          <input type="submit" />
+        </form>
+
         <div className="panel panel-default">
           <div className="panel-body">
             <div className="container form-group">

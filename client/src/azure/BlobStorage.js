@@ -1,11 +1,11 @@
-import { BlobServiceClient, ContainerClient } from "@azure/storage-blob";
+import { BlobServiceClient } from "@azure/storage-blob";
 
 // THIS IS SAMPLE CODE ONLY - DON'T STORE TOKEN IN PRODUCTION CODE
-const containerName = `questbookcontainer-1003`;
+const containerName = `guestbookblobcont1003`;
 
 const sasToken =
-  "afA/BBt1Yw1JegUqvLIOfNVocvDo9ZRLBekGBfcl+JaIYLwPp4KbpDT1lLBT8XURwQrUu8JmEKCPQQzXjr6H0w==";
-const storageAccountName = "guestbookblob1003";
+  "sp=racwdl&st=2021-06-07T17:52:30Z&se=2021-06-08T01:52:30Z&sv=2020-02-10&sr=c&sig=HLnPy2AS6sfqJfI8%%2F%%2FUzSUIESbNUhSI2s9CqyxLa8j0%%3D";
+const storageAccountName = "csb10032000caf50971";
 
 // </snippet_package>
 
@@ -38,9 +38,13 @@ const getBlobsInContainer = async (containerClient) => {
 const createBlobInContainer = async (containerClient, file) => {
   // create blobClient for container
   const blobClient = containerClient.getBlockBlobClient(file.name);
-
   // set mimetype as determined from browser with file upload control
-  const options = { blobHTTPHeaders: { blobContentType: file.type } };
+  // const metadata = {};
+  //metadata["x-ms-blob-type"] = "BlockBlob";
+  const options = {
+    blobHTTPHeaders: { blobContentType: "BlockBlob" },
+  };
+  blobClient.DefaultRequestHeaders.Add("x-ms-blob-type", "BlockBlob");
 
   // upload file
   await blobClient.uploadBrowserData(file, options);
