@@ -2,8 +2,8 @@ import React from "react";
 import axios from "axios";
 import GuestStore from "../Stores";
 import "./GBList.css";
-import uploadFileToBlob, { isStorageConfigured } from "../azure/BlobStorage";
-const storageConfigured = isStorageConfigured();
+//import uploadFileToBlob, { isStorageConfigured } from "../azure/BlobStorage";
+//const storageConfigured = isStorageConfigured();
 
 class GBList extends React.Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class GBList extends React.Component {
   }
 
   onClick = (e) => {
-    let { name, message } = this.state;
+    //  let { name, message } = this.state;
 
     // console.log("storageConfigured:" + storageConfigured);
     // const blobId = this.onFileUpload();
@@ -50,24 +50,24 @@ class GBList extends React.Component {
       });
 
     return;
-    if (
-      this.state.name.lenght > 0 &&
-      this.state.message.lenght > 0 &&
-      this.state.selectedFile != null
-    ) {
-      axios
-        .post("/api/review", {
-          name: name,
-          message: message,
-        })
-        .then((response) => {
-          console.log(response, "Review added!");
-        })
-        .catch((err) => {
-          console.log(err, "Review not added");
-        });
-      this.setState({ message: "", name: "" });
-    }
+    // if (
+    //   this.state.name.lenght > 0 &&
+    //   this.state.message.lenght > 0 &&
+    //   this.state.selectedFile != null
+    // ) {
+    //   axios
+    //     .post("/api/review", {
+    //       name: name,
+    //       message: message,
+    //     })
+    //     .then((response) => {
+    //       console.log(response, "Review added!");
+    //     })
+    //     .catch((err) => {
+    //       console.log(err, "Review not added");
+    //     });
+    //   this.setState({ message: "", name: "" });
+    // }
   };
 
   handleInputChange = (e) => {
