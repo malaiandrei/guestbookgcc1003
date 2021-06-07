@@ -20,7 +20,7 @@ module.exports = async function (context, req) {
 
   const blobName = parts[0].filename;
   const blockBlobClient = containerClient.getBlockBlobClient(blobName);
-  const uploadBlobResponse = await blockBlobClient.upload(
+  const uploadBlobResponses = await blockBlobClient.upload(
     parts[0].data,
     parts[0].data.length
   );
