@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import GuestStore from "../Stores";
 import "./GBList.css";
-//import uploadFileToBlob, { isStorageConfigured } from "../azure/BlobStorage";
+import uploadFileToBlob from "../azure/BlobStorage";
 //const storageConfigured = isStorageConfigured();
 
 class GBList extends React.Component {
